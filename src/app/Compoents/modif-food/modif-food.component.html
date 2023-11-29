@@ -1,0 +1,53 @@
+<form *ngIf="foodForm" [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="code">Id:</label>
+    <input type="text" id="code" formControlName="code" readonly />
+  </div>
+
+  <!-- Name -->
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+  </div>
+
+  <!-- Price -->
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" id="price" formControlName="price" />
+  </div>
+
+  <!-- Favorite -->
+  <div>
+    <label for="favorite">Favorite:</label>
+    <input type="checkbox" id="favorite" formControlName="favorite" />
+  </div>
+
+  <!-- Stars -->
+  <div>
+    <label for="stars">Stars:</label>
+    <input type="number" id="stars" formControlName="stars" />
+  </div>
+
+  <!-- Image -->
+  <div>
+    <label for="image">Image URL:</label>
+    <input type="text" id="image" formControlName="image" />
+  </div>
+
+  <!-- Origins (Array) -->
+  <div>
+    <label for="origins">Origins:</label>
+    <select id="origins" formControlName="origins">
+      <option *ngFor="let country of countries" [ngValue]="country" [selected]="country === food.origins">{{ country }}</option>
+    </select>
+  </div>
+
+  <!-- Cook Time -->
+  <div>
+    <label for="cookTime">Cook Time:</label>
+    <input type="text" id="cookTime" formControlName="cookTime" />
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="foodForm.invalid">Submit</button>
+</form>

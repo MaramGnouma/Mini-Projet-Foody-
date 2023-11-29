@@ -1,0 +1,132 @@
+<header>
+  <div id="navbar">
+      <img src="assets/img/logo.png" alt="Food Lover Logo">
+      <nav role="navigation">
+          <ul>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/menu">Menu</a></li>
+              <li><a href="#menu">About</a></li>
+
+          </ul>
+      </nav>
+  </div>
+  <div class="content">
+      <h1>Welcome To <span class="primary-text"> Foody </span> Restaurant</h1>
+      <p>Here you can find Most delicacies food in the world</p>
+      <a href="#contact" class="btn btn-orange">Visit US</a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+      <div class="title">
+          <h2>The Foody history</h2>
+          <p>More than 25+ years of experience</p>
+      </div>
+      <div class="about-content">
+          <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, quibusdam saepe natus
+                  numquam dolorum aliquam ducimus molestias tenetur? Quaerat, atque blanditiis. Debitis
+                  voluptatem
+                  sequi quibusdam nihil eveniet obcaecati soluta rem.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat nesciunt aspernatur earum
+                  sequi
+                  consequatur, quasi iste quod nam esse adipisci neque commodi voluptate deserunt architecto
+                  rerum. Blanditiis labore sed sapiente.</p>
+              <a href="#" class="btn btn-secondary">LEARN MORE</a>
+          </div>
+          <img src="assets/img/about_img.png" alt="Pizza">
+      </div>
+  </div>
+</section>
+<!-- Menu Section Start -->
+<section id="menu">
+  <div class="container">
+      <div class="title">
+          <h2>Our Special Menu</h2>
+          <p>Order two and get third for free</p>
+      </div>
+      <div class="menu-items">
+          <div class="menu-items-left" *ngFor="let foodItem of foods">
+              <div class="menu-item">
+                <img [src]="foodItem.image" mat-dialog-content [alt]="foodItem.name"  (click)="getId(foodItem._id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div>
+                      <h3> {{foodItem.name}} <span class="primary-text">{{ foodItem.price }} TND </span> </h3>
+
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                  </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </section>
+<!-- Daytime section start-->
+<section id="daytime">
+  <div class="container">
+      <div class="daytime-items">
+          <div class="daytime-item">
+              <img src="assets/img/breckfastIcon.png" alt="Breakfast">
+              <h3>Breakfast</h3>
+              <p>8:00 am to 10:00 am</p>
+          </div>
+          <div class="daytime-item">
+              <img src="assets/img/lunchIcon.png" alt="Lunch">
+              <h3>Lunch</h3>
+              <p>4:00 pm to 7:00 pm</p>
+          </div>
+          <div class="daytime-item">
+              <img src="assets/img/dinnerIcon.png" alt="Dinner">
+              <h3>Dinner</h3>
+              <p>9:00 pm to 1:00 Am</p>
+          </div>
+          <div class="daytime-item">
+              <img src="assets/img/dessertIcon.png" alt="dessert">
+              <h3>Dessert</h3>
+              <p>All day</p>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Daytime section end-->
+<!-- Contact Section Start -->
+<section id="contact">
+  <div class="container">
+      <div class="contact-content">
+          <div class="contact-info">
+              <div>
+                  <h3>ADDRESS</h3>
+                  <p><i class="fa-solid fa-location-dot"></i>Zone Touristique Gammarth Gammarth, Tunis</p>
+                  <p><i class="fa-solid fa-phone"></i> Phone: 21 000 555</p>
+                  <p><i class="fa-regular fa-envelope"></i> foody.com</p>
+              </div>
+              <div>
+                  <h3>WORKING HOURS</h3>
+                  <p>8:00 am to 11:00 pm on days</p>
+                  <p>8:00 am to 1:00 Am on Weekends</p>
+              </div>
+              <div>
+                  <h3>FOLLOW US</h3>
+                  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+          </div>
+          <!-- home.component.html -->
+<form [formGroup]="contactForm" (ngSubmit)="ajouterContact()">
+  <!-- Vos champs de formulaire ici -->
+  <input type="text" formControlName="name" placeholder="Full Name">
+  <input type="email" formControlName="email" placeholder="Email Address">
+  <input type="text" formControlName="subject" placeholder="Subject">
+  <textarea formControlName="message" cols="30" rows="5" placeholder="Message"></textarea>
+  <button type="submit" class="btn btn-third">SEND MESSAGE</button>
+</form>
+
+      </div>
+  </div>
+</section>
+<!-- Contact Section End -->
+
+<footer id="footer">
+<p>Copyright &copy; 2023 All rights reserved | made by <b> <a href="#"
+          target="_blank"> Maram Gnouma </a> </b></p>
+</footer>

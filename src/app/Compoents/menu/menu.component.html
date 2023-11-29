@@ -1,0 +1,53 @@
+<app-header></app-header>
+<section>
+  <div class="contains">
+      <div class="title">
+          <h2>The Foody Menu</h2>
+
+      </div>
+      </div>
+      </section>
+      <div class="rech">
+        <input #searchInput type="text" placeholder="Rechercher" (input)="search(searchInput.value)" [(ngModel)]="searchText" />
+      </div>
+
+<ul class="list-unstyled">
+  <li *ngFor="let foodItem of foods" class="d-flex align-items-center">
+    <a>
+      <img [src]="foodItem.image" [alt]="foodItem.name" (click)="getId(foodItem._id)" />
+
+      <div class="content">
+        <div class="name">
+            {{foodItem.name}}
+        </div>
+        <span class="favorite" *ngIf="foodItem.favorite">
+          ❤
+        </span>
+
+        <div class="stars" [appStarRating]="foodItem.stars"></div>
+
+        <div class="product-item-footer">
+          <div class="origins">
+            <span >
+              {{foodItem.origins}}
+            </span>
+          </div>
+
+          <div class="cook-time">
+            <span>🕒</span>
+            {{foodItem.cookTime}}
+          </div>
+        </div>
+
+        <div class="price">
+
+          <span>
+
+            {{ foodItem.price }} TND
+          </span>
+         </div>
+        </div>
+
+    </a>
+  </li>
+</ul>

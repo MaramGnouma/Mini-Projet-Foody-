@@ -1,0 +1,51 @@
+<header>
+  <div id="navbar">
+      <img src="assets/img/logo.png" alt="Food Lover Logo">
+      <nav role="navigation">
+          <h1>Gérer Foody</h1>
+      </nav>
+  </div>
+
+</header>
+<div>
+  <button class="add" routerLink="/add">Ajouter Food</button>
+
+  <div class="rech">
+    <input #searchInput type="text" placeholder="Rechercher" (input)="search(searchInput.value)" [(ngModel)]="searchText" />
+  </div>
+
+
+
+<h4>Liste des foods</h4>
+<table class="table table-striped container">
+    <thead>
+        <tr>
+            <th> Image</th>
+            <th>Nom</th>
+            <th>Origine</th>
+            <th>cookTime</th>
+            <th>Prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of foods">
+            <td><img [src]="a.image" width="50px"></td>
+            <td>{{a.name}} </td>
+            <td> {{a.origins}}</td>
+            <td> {{a.cookTime}}</td>
+            <td> {{a.price}}</td>
+
+            <td>
+              <button (click)="modifier(a._id, a)" class="btn btn-secondary">
+                  <i class="fas fa-edit"></i> Modifier
+              </button>
+          </td>
+          <td>
+              <button (click)="supprimer(a._id)" class="btn btn-secondary">
+                  <i class="fas fa-trash-alt"></i> Supprimer
+              </button>
+          </td>
+        </tr>
+    </tbody>
+</table>
+</div>

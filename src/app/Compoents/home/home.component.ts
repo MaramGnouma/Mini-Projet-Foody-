@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FoodServiceService } from 'src/app/Services/food-service.service';
-import { FoodAddComponent } from '../food-add/food-add.component';
 import { Food } from 'src/app/Models/food';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -36,6 +35,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 this.loadFoods();
+
 
   }
   search(query: string): void {
@@ -80,18 +80,10 @@ this.loadFoods();
       this.contactService.addContact(this.contactForm.value).subscribe(
         (contact) => {
           console.log('Contact ajouté avec succès:', contact);
+
           // Réinitialiser les données du nouveau contact après l'ajout
           this.contactForm.reset();
-          // Recharger la liste des contacts
-
-          // Afficher la boîte de dialogue
-          this.snackBar.open('Votre message a été bien envoyé. Merci pour votre message.', 'Fermer', {
-            duration: 5000, // Durée d'affichage en millisecondes (5 secondes)
-            panelClass: ['generic-snackbar'],
-          });
-
-          console.log(this.snackBar);
-
+          window.alert('Votre message a été bien envoyé. Merci pour votre message.');
         },
         (error) => {
           console.error('Erreur lors de l\'ajout du contact:', error);
@@ -101,5 +93,6 @@ this.loadFoods();
       console.log('Le formulaire n\'est pas valide.');
     }
   }
+
 
 }

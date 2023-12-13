@@ -43,9 +43,10 @@ export class LoginComponent implements OnInit {
         text: 'Please enter a valid email'
       });
     } else {
+      localStorage.setItem('token', Math.random().toString());
       this.httpClient.post("http://localhost:5000/api/login", user, { withCredentials: true })
         .subscribe(
-          () => this.router.navigate(['/gerer']),
+          () => this.router.navigate(['gerer']),
 
           (err) => {
             console.error(err);  // Log the error to the console for debugging

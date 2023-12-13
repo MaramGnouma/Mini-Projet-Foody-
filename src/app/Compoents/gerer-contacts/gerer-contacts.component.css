@@ -1,0 +1,43 @@
+
+.rech{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+
+}
+
+input{
+  border-radius: 10rem 10rem 10rem 10rem;
+  border:none;
+  height: 3rem;
+  width: 20rem;
+  background-color: rgb(208, 202, 195);
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: none;
+  padding-right: 30px;
+}
+
+
+.add{
+  margin-left: 85%;
+  margin-top: 1%;
+  border-radius: 10rem 10rem 10rem 10rem;
+  border:none;
+
+  background-color: rgb(177, 170, 159);
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: none;
+}
+.container {
+  margin-left: 150px;
+}
+h4{
+  margin-left: 150px;
+
+}

@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from 'src/app/Models/food';
 import { FoodServiceService } from 'src/app/Services/food-service.service';
+import { Emitters } from 'src/app/emmiters/emmiter';
 
 @Component({
   selector: 'app-gestionfood',
@@ -13,86 +15,45 @@ export class GestionfoodComponent implements OnInit {
   searchText = '';
   selectedFood: any;
   message=""
-  constructor(private foodService: FoodServiceService, private router: Router,private activatedRoute: ActivatedRoute) {}
+  authenticated: boolean;
+
+  constructor(private router: Router,private http:HttpClient) {}
 
 
   ngOnInit(): void {
-this.loadFoods();
-
-  }
 
 
-  search(query: string): void {
-    this.foodService.searchFood(query).subscribe(
-      (searchResults) => {
-        console.log('Search results:', searchResults);
-        this.foods = searchResults; // Update the foods array with search results
-      },
-      (error) => {
-        console.error('Error searching for food:', error);
-      }
-    );
+  //Emitters
+  Emitters.authEmitter.subscribe((auth:boolean)=>{
+    this.authenticated=auth;
+  })
 
-    // Si le texte de recherche est vide, naviguez vers la page d'accueil
-    if (!query.trim()) {
-      this.loadFoods();
+  this.http.get('http://localhost:5000/api/user', {
+    withCredentials: true
+  }).subscribe(
+    (res: any) => {
+      this.message = `${res.name}`;
+      Emitters.authEmitter.emit(true);
+    },
+    (err) => {
+      this.message = 'you are not logged in';
+      Emitters.authEmitter.emit(false);
     }
-  }
-  loadFoods(): void {
-    this.foodService.getAllFoods().subscribe((foods) => this.foods = foods); // Corrected function name
+  );
   }
 
-  getFoods() {
-    this.foodService.getAllFoods().subscribe(data => {
-      this.foods = data;
-    });
-  }
-  getId(foodId: string): void {
-    console.log('viewDetails - foodId', foodId);
-    this.foodService.getFoodById(foodId).subscribe(
-      (food) => {
-        this.router.navigate(['/foods', foodId]);
-      },
-      (error) => {
-        console.error(`Error loading food details for ID ${foodId}`, error);
-      }
-    );
-  }
-  addFood(newFood: any) {
-    this.foodService.addFood(newFood).subscribe(() => {
-      this.getFoods();
-    });
-  }
 
-  modifier(foodId: string, food: Food): void {
-    console.log('viewDetails - foodId', foodId);
-    this.foodService.updateFood(foodId, food).subscribe(
-      (food) => {
-        this.router.navigate(['/foodsupdate', foodId]);
-      },
-      (error) => {
-        console.error(`Error loading food details for ID ${foodId}`, error);
-      }
-    );
-  }
 
-  supprimer(id: string): void {
-    // Utilisez window.confirm pour demander la confirmation
-    const isConfirmed = window.confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');
-
-    if (isConfirmed) {
-      this.foodService.deleteFood(id).subscribe(
-        () => {
-          console.log('Food item deleted successfully.');
-          // Ajoutez une logique supplémentaire ici après la suppression réussie.
-          this.getFoods(); // Rafraîchir automatiquement après la suppression
-        },
-        (error) => {
-          console.error('Error deleting food item:', error);
-          // Gérez l'erreur et affichez un message approprié à l'utilisateur.
-        }
-      );
+  logout():void{
+    const confirmation = confirm('Do you want to logout');
+    if(confirmation) {
+      localStorage.removeItem('token');
+      this.http.post('http://localhost:5000/api/logout',{},{
+      withCredentials:true
+    }).subscribe(()=>this.authenticated=false)
+    this.router.navigate(['/login']);
     }
+
   }
 
 }

@@ -1,0 +1,154 @@
+<app-gestionfood></app-gestionfood>
+<div>
+  <button class="add btn btn-secondary"  type="button"  data-toggle="modal" data-target="#exampleModal" >Ajouter </button>
+
+
+
+  <div class="rech">
+    <input #searchInput type="text" placeholder="Rechercher" (input)="search(searchInput.value)" [(ngModel)]="searchText" class="input-field" />
+  </div>
+
+
+
+  <div class="main-content" style="margin-left: 40px;margin-right: 40px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h2 class="card-title " style="align-items: center;display: flex;padding-left: 650px;">Liste de foods</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Nom
+                                    </th>
+                                    <th>
+                                        Origins
+                                    </th>
+                                    <th>
+                                        cookTime
+                                    </th>
+                                    <th>
+                                      Type
+                                  </th>
+                                    <th>
+                                        Prix
+                                    </th>
+                                    <th colspan="2">
+                                      Actions
+                                  </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let a of foods">
+
+                                        <td>
+                                          <img [src]="a.image" width="50px">
+                                        </td>
+                                        <td>
+                                           {{a.name}}
+                                        </td>
+                                        <td>
+                                            {{a.origins}}
+                                        </td>
+                                        <td>
+                                            {{a.cookTime}}
+                                        </td>
+                                        <td>
+                                          {{a.type}}
+                                      </td>
+                                        <td class="text-primary">
+                                            {{a.price}}
+                                        </td>
+                                        <td class="text-primary" (click)="modifier(a._id, a)">
+                                          <i class="fas fa-edit"></i>
+                                      </td>
+                                      <td class="text-primary" (click)="supprimer(a._id)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+<!--Ajouter Food-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+          <h2>Ajouter un  Aliment</h2>
+          <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+            <label for="field2"><span>Nom </span><input type="text" id="name" formControlName="name"  class="input-field"/></label>
+            <div *ngIf="isnomPattern()" class="alert alert-warning">
+              Le nom du produit doit commencer par majuscule.
+             </div>
+             <div *ngIf="isnomrequired()" class="alert alert-warning">
+              Le nom doit etre obligatoire.
+              </div>
+       <label for="field3"><span>Prix </span><input type="number" id="price" formControlName="price" class="input-field"/></label> <br>
+       <div *ngIf="isprixPattern()" class="alert alert-warning">
+        Le prix du produit doit etre positive.
+       </div>
+       <div *ngIf="isprixrequired()" class="alert alert-warning">
+        Le prix doit etre obligatoire.
+        </div>
+       <label for="field4"><span>Origins </span>
+        <select id="origins" formControlName="origins">
+          <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+        </select>
+      </label>
+       <label for="field5"><span>Cook Time </span><input type="text" id="cookTime" formControlName="cookTime"  class="input-field"/></label>
+
+        <div *ngIf="iscookitimePattern()" class="alert alert-warning">
+          La durée  doit etre positive.
+         </div>
+         <div *ngIf="iscooktimerequired()" class="alert alert-warning">
+          La durée doit etre obligatoire.
+          </div>
+
+       <label for="field5"><span>Stars</span><input type="number" id="stars" formControlName="stars" class="input-field"/></label>
+       <div *ngIf="isstartrequired()" class="alert alert-warning">
+        La start  doit etre positive.
+       </div>
+
+       <label for="field6"><span>Image URL </span><input type="file" id="image" formControlName="image" (change)="onFileSelected($event)" /></label>  <br>
+       <div *ngIf="isphotorequired()" class="alert alert-warning">
+        Image est obligatoire.
+          </div>
+       <label for="field6"><span>Favorite </span><input  type="checkbox" id="favorite" formControlName="favorite" /></label> <br>
+       <label for="field7"> <span>Types</span></label>
+        <select id="type" formControlName="type">
+          <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+        </select>
+        </form>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+        <button type="submit" (click)= "onSubmit()" class="btn btn-primary" [disabled]="foodForm.invalid">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

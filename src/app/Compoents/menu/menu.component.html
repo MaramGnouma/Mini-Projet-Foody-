@@ -2,13 +2,36 @@
 <section>
   <div class="contains">
       <div class="title">
-          <h2>The Foody Menu</h2>
+          <h2>Le Menu Spécial de Foody</h2>
 
       </div>
       </div>
       </section>
       <div class="rech">
         <input #searchInput type="text" placeholder="Rechercher" (input)="search(searchInput.value)" [(ngModel)]="searchText" />
+      </div>
+      <div>
+        <div class="product-item-footer1">
+          <div class="origins1">
+            <span (click)="loadFoods()" >
+              Tous
+           </span>
+           <span (click)="getFoodsBySpecificType('Petit-déjeuner')">
+            Petit-déjeuner
+           </span>
+
+           <span (click)="getFoodsBySpecificType('Déjeuner')">
+              Déjeuner
+           </span>
+           <span (click)="getFoodsBySpecificType('Dîner')">
+              Dîner
+           </span>
+
+           <span (click)="getFoodsBySpecificType('Dessert')">
+            Dessert
+           </span>
+
+          </div>
       </div>
 
 <ul class="list-unstyled">
@@ -20,7 +43,7 @@
         <div class="name">
             {{foodItem.name}}
         </div>
-        <span class="favorite" *ngIf="foodItem.favorite">
+        <span class="favorite {{foodItem.favorite?'':'not'}}">
           ❤
         </span>
 
@@ -38,16 +61,13 @@
             {{foodItem.cookTime}}
           </div>
         </div>
-
         <div class="price">
+            {{ foodItem.price }}
 
-          <span>
-
-            {{ foodItem.price }} TND
-          </span>
          </div>
         </div>
 
     </a>
   </li>
 </ul>
+<app-footer></app-footer>

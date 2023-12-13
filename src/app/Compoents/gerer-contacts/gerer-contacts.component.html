@@ -1,0 +1,56 @@
+<app-gestionfood></app-gestionfood>
+<div>
+  <div class="main-content" style="margin-left: 40px;margin-right: 40px;margin-top: 50px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h2 class="card-title " style="align-items: center;display: flex;padding-left: 650px;">Liste des Contact</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+
+                                    <th>
+                                        Nom Contact
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Sujet
+                                    </th>
+                                    <th>
+                                        Message
+                                    </th>
+                                    <th>
+                                      Actions
+                                  </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let a of contacts">
+                                        <td>
+                                           {{a.name}}
+                                        </td>
+                                        <td>
+                                            {{a.email}}
+                                        </td>
+                                        <td>
+                                            {{a.subject}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{a.message}}
+                                        </td>
+                                        <td class="text-primary" (click)="supprimer(a._id)">
+                                          <i class="fas fa-trash-alt"></i>
+                                      </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>

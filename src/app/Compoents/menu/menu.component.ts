@@ -8,18 +8,19 @@ import { FoodServiceService } from 'src/app/Services/food-service.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  foods!: any[];
+  foods: any[] = [];
   searchText = '';
   selectedFood: any;
-  message=""
-  constructor(private foodService: FoodServiceService, private router: Router,private activatedRoute: ActivatedRoute) {}
+  message = '';
+  tags: any[];
 
-
-  ngOnInit(): void {
-this.loadFoods();
+  constructor(private foodService: FoodServiceService, private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
+  ngOnInit(): void {
+    this.loadFoods();
+  }
 
   search(query: string): void {
     this.foodService.searchFood(query).subscribe(
@@ -37,15 +38,17 @@ this.loadFoods();
       this.loadFoods();
     }
   }
+
   loadFoods(): void {
-    this.foodService.getAllFoods().subscribe((foods) => this.foods = foods); // Corrected function name
+    this.foodService.getAllFoods().subscribe((foods) => this.foods = foods);
   }
 
-  getFoods() {
+  getFoods(): void {
     this.foodService.getAllFoods().subscribe(data => {
       this.foods = data;
     });
   }
+
   getId(foodId: string): void {
     console.log('viewDetails - foodId', foodId);
     this.foodService.getFoodById(foodId).subscribe(
@@ -54,6 +57,18 @@ this.loadFoods();
       },
       (error) => {
         console.error(`Error loading food details for ID ${foodId}`, error);
+      }
+    );
+  }
+
+  // Ajout de la fonction pour obtenir les aliments par type spécifique
+  getFoodsBySpecificType(specificType: string): void {
+    this.foodService.getFoodsBySpecificType(specificType).subscribe(
+      (foods) => {
+        this.foods = foods;
+      },
+      (error) => {
+        console.error(`Error loading foods for specific type ${specificType}`, error);
       }
     );
   }

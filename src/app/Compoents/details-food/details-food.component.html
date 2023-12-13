@@ -9,6 +9,7 @@
       </span>
       <span class="favorite {{food.favorite? '': 'not'}}">❤</span>
     </div>
+    <br> <br>
 
     <div class="stars" [appStarRating]="food.stars"></div>
     <div class="origins">
@@ -20,7 +21,7 @@
 
     <div class="cook-time">
       <span>
-        Time to cook about <strong>{{food.cookTime}}</strong> minutes
+        Temps de cuisiner <strong>{{food.cookTime}}</strong> minutes
       </span>
     </div>
 
@@ -33,3 +34,4 @@
     <!--<button (click)="addToCart()">Add To Cart</button>-->
 
   </div>
+

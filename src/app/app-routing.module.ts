@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Compoents/home/home.component';
 import { DetailsFoodComponent } from './Compoents/details-food/details-food.component';
-import { FoodAddComponent } from './Compoents/food-add/food-add.component';
 import { ModifFoodComponent } from './Compoents/modif-food/modif-food.component';
 import { LoginComponent } from './Compoents/login/login.component';
 import { RegisterComponent } from './Compoents/register/register.component';
-import { AuthGuard2Service } from './auth-guard2.service';
 import { HeaderComponent } from './Compoents/header/header.component';
 import { MenuComponent } from './Compoents/menu/menu.component';
 import { GestionfoodComponent } from './Compoents/gestionfood/gestionfood.component';
+import { GererFoodsComponent } from './Compoents/gerer-foods/gerer-foods.component';
+import { GererContactsComponent } from './Compoents/gerer-contacts/gerer-contacts.component';
+import { ProposComponent } from './Compoents/propos/propos.component';
+import { ErreurComponent } from './Compoents/erreur/erreur.component';
+import { authGuard } from './auth.guard';
+import { roleGuard } from './role.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to login page if the path is empty
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {path:'header',component:HeaderComponent},
@@ -20,14 +24,28 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-     // Use the AuthGuard to protect the route
+
+  },
+  {
+    path: 'propos',
+    component: ProposComponent,
   },
   { path: 'foods/:id', component: DetailsFoodComponent },
-  { path: 'gerer', component: GestionfoodComponent,
-  canActivate: [AuthGuard2Service] },
-  { path: 'add', component: FoodAddComponent },
-  { path: 'foodsupdate/:id', component: ModifFoodComponent },
+  { path: 'gerer', component: GererFoodsComponent,
+  canActivate: [authGuard, roleGuard],
+    data: {
+      role: 'ADMIN'
+    } },
+  { path: 'foodsupdate/:id', component: ModifFoodComponent,canActivate: [authGuard, roleGuard],
+  data: {
+    role: 'ADMIN'
+  }  },
+  { path: 'contacts', component: GererContactsComponent ,canActivate: [authGuard, roleGuard],
+  data: {
+    role: 'ADMIN'
+  } },
   { path: 'search/:txt', component: HomeComponent },
+  {path:'**',component:ErreurComponent}
 ];
 
 @NgModule({

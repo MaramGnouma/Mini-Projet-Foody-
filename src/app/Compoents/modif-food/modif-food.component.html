@@ -1,53 +1,52 @@
-<form *ngIf="foodForm" [formGroup]="foodForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="code">Id:</label>
-    <input type="text" id="code" formControlName="code" readonly />
-  </div>
+<app-gestionfood></app-gestionfood>
 
-  <!-- Name -->
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" formControlName="name" />
-  </div>
+<h1 style="margin-left: 600px; margin-top: 20px;">Modifier un aliment</h1>
+<div class="form-style-3" style="margin-left: 500px;">
+  <form *ngIf="foodForm" [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+    <fieldset><legend>Aliment</legend>
+      <!-- Utilisez (input) pour détecter les changements dans l'input file -->
 
-  <!-- Price -->
-  <div>
-    <label for="price">Price:</label>
-    <input type="number" id="price" formControlName="price" />
-  </div>
+<!-- Affichez l'image dans une balise img -->
+<img [src]="imageUrl || foodForm.value.image" style="width: 300px; height: 200px; padding-left: 100px; padding-bottom: 20px;" />
+<span style="padding-left: 120px;"><input type="file" id="image" formControlName="image" (input)="onFileSelected($event)" /></span>
+      <!-- Id -->
+      <label for="code"><span>Id </span><input type="text" id="code" formControlName="code" readonly class="input-field" /></label>
 
-  <!-- Favorite -->
-  <div>
-    <label for="favorite">Favorite:</label>
-    <input type="checkbox" id="favorite" formControlName="favorite" />
-  </div>
+      <!-- Name -->
+      <label for="name"><span>Nom </span><input type="text" id="name" formControlName="name" class="input-field" /></label>
 
-  <!-- Stars -->
-  <div>
-    <label for="stars">Stars:</label>
-    <input type="number" id="stars" formControlName="stars" />
-  </div>
+      <!-- Price -->
+      <label for="price"><span>Prix </span><input type="number" id="price" formControlName="price" class="input-field" /></label>
 
-  <!-- Image -->
-  <div>
-    <label for="image">Image URL:</label>
-    <input type="text" id="image" formControlName="image" />
-  </div>
+      <!-- Origins -->
+      <label for="origins"><span>Origins </span>
+        <select id="origins" formControlName="origins">
+          <option *ngFor="let country of countries" [ngValue]="country" [selected]="country === food.origins">{{ country }}</option>
+        </select>
+      </label>
 
-  <!-- Origins (Array) -->
-  <div>
-    <label for="origins">Origins:</label>
-    <select id="origins" formControlName="origins">
-      <option *ngFor="let country of countries" [ngValue]="country" [selected]="country === food.origins">{{ country }}</option>
-    </select>
-  </div>
+      <!-- Cook Time -->
+      <label for="cookTime"><span>Cook Time </span><input type="text" id="cookTime" formControlName="cookTime" class="input-field" /></label>
 
-  <!-- Cook Time -->
-  <div>
-    <label for="cookTime">Cook Time:</label>
-    <input type="text" id="cookTime" formControlName="cookTime" />
-  </div>
+      <!-- Stars -->
+      <label for="stars"><span>Stars</span><input type="number" id="stars" formControlName="stars" class="input-field" /></label>
 
-  <!-- Submit Button -->
-  <button type="submit" [disabled]="foodForm.invalid">Submit</button>
-</form>
+      <!-- Image URL -->
+
+      <!-- Favorite -->
+      <label for="favorite"><span>Favorite </span><input type="checkbox" id="favorite" formControlName="favorite" class="input-field" /></label>
+
+      <label for="type"> <span>Types</span>
+        <select id="type" formControlName="type">
+          <option *ngFor="let t of types" [ngValue]="t" [selected]="t === food.type">{{ t }}</option>
+        </select>
+      </label>
+
+
+      <br>
+      <!-- Submit Button -->
+      <button type="submit">Modifier</button>
+      <button type="button" [routerLink]="['/gerer']">Retour</button>
+    </fieldset>
+  </form>
+</div>

@@ -1,88 +1,187 @@
-<header>
-  <div id="navbar">
+
+<header >
+  <div id="navbar" >
       <img src="assets/img/logo.png" alt="Food Lover Logo">
       <nav role="navigation">
           <ul>
-            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/home">Accueil </a></li>
             <li><a routerLink="/menu">Menu</a></li>
-              <li><a href="#menu">About</a></li>
+              <li><a routerLink="/propos">A propos</a></li>
 
           </ul>
       </nav>
   </div>
   <div class="content">
-      <h1>Welcome To <span class="primary-text"> Foody </span> Restaurant</h1>
-      <p>Here you can find Most delicacies food in the world</p>
-      <a href="#contact" class="btn btn-orange">Visit US</a>
-  </div>
+      <h1>Bienvenue au  <span class="primary-text"> Foody </span> restaurant</h1>
+      <p>Vous découvrirez ici les mets les plus délicieux du monde</p>
+      <a href="#" class="btn btn-gradient" id="explore-btn" routerLink="/menu">Explorez-nous !</a>
+    </div>
 </header>
+ <!--
+        - #SERVICE
+      -->
+<div class="test">
+  <section class="section service bg-black-10 text-center" aria-label="service">
+    <div class="container">
+
+      <p class="section-subtitle label-2 test2">Saveurs pour la royauté</p>
+
+      <h2 class="headline-1 section-title test2">Nous offrons du haut de gamme</h2>
+
+      <p class="section-text test2">
+        Découvrez des créations uniques préparées par nos chefs talentueux qui mettent en valeur les meilleurs
+        ingrédients de la région.Chez Foody, chaque bouchée est une aventure.
+      </p>
+
+      <ul class="grid-list">
+
+        <li>
+          <div class="service-card">
+
+            <a href="#" class="has-before hover:shine">
+              <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                <img src="/assets/images/service-1.jpg" width="285" height="336" loading="lazy" alt="Breakfast"
+                  class="img-cover">
+              </figure>
+            </a>
+
+            <div class="card-content">
+
+              <h3 class="title-4 card-title">
+                <a href="#">Petit-déjeuner</a>
+              </h3>
+
+
+
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="service-card">
+
+            <a href="#" class="has-before hover:shine">
+              <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                <img src="/assets/images/service-2.jpg" width="285" height="336" loading="lazy" alt="Appetizers"
+                  class="img-cover">
+              </figure>
+            </a>
+
+            <div class="card-content">
+
+              <h3 class="title-4 card-title">
+                <a href="#">Apéritifs</a>
+              </h3>
+
+
+
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <div class="service-card">
+
+            <a href="#" class="has-before hover:shine">
+              <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                <img src="/assets/images/service-3.jpg" width="285" height="336" loading="lazy" alt="Drinks"
+                  class="img-cover">
+              </figure>
+            </a>
+
+            <div class="card-content">
+
+              <h3 class="title-4 card-title">
+                <a href="#">Boissons</a>
+              </h3>
+
+
+
+            </div>
+
+          </div>
+        </li>
+
+      </ul>
+
+      <img src="/assets/images/shape-1.png" width="246" height="412" loading="lazy" alt="shape"
+        class="shape shape-1 move-anim">
+      <img src="/assets/images/shape-2.png" width="343" height="345" loading="lazy" alt="shape"
+        class="shape shape-2 move-anim">
+
+    </div>
+    </section>
+</div>
+
+
 
 <section id="about">
   <div class="container">
       <div class="title">
-          <h2>The Foody history</h2>
-          <p>More than 25+ years of experience</p>
+          <h2>L'histoire de Foody</h2>
+          <p>Plus de 10+ années d'expérience</p>
       </div>
       <div class="about-content">
           <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, quibusdam saepe natus
-                  numquam dolorum aliquam ducimus molestias tenetur? Quaerat, atque blanditiis. Debitis
-                  voluptatem
-                  sequi quibusdam nihil eveniet obcaecati soluta rem.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat nesciunt aspernatur earum
-                  sequi
-                  consequatur, quasi iste quod nam esse adipisci neque commodi voluptate deserunt architecto
-                  rerum. Blanditiis labore sed sapiente.</p>
-              <a href="#" class="btn btn-secondary">LEARN MORE</a>
+              <p>Bienvenue à Foody, votre destination culinaire exclusive à Gammarth. Notre histoire est façonnée par
+                la passion pour les saveurs exquises et l'art de la gastronomie. Chaque plat raconte une histoire de
+                créativité, de fraîcheur et d'authenticité.</p>
+              <p>Découvrez des créations uniques préparées par nos chefs talentueux qui mettent en valeur les meilleurs
+                ingrédients de la région.Chez Foody, chaque bouchée est une aventure, chaque
+                 repas est une célébration. Rejoignez-nous et découvrez l'essence même de la gastronomie à Gammarth.</p>
+              <a href="#" class="btn btn-secondary" routerLink="/propos">EN SAVOIR PLUS</a>
           </div>
           <img src="assets/img/about_img.png" alt="Pizza">
       </div>
   </div>
 </section>
-<!-- Menu Section Start -->
 <section id="menu">
   <div class="container">
       <div class="title">
-          <h2>Our Special Menu</h2>
-          <p>Order two and get third for free</p>
+          <h2>Notre Menu Spécial</h2>
+          <p>Savourez, commandez, adorez !</p>
       </div>
       <div class="menu-items">
-          <div class="menu-items-left" *ngFor="let foodItem of foods">
+          <!-- Utilisez la directive *ngFor avec la fonction slice pour limiter le nombre d'éléments à afficher -->
+          <div class="menu-items-left" *ngFor="let foodItem of foods.slice(0, 2)">
               <div class="menu-item">
-                <img [src]="foodItem.image" mat-dialog-content [alt]="foodItem.name"  (click)="getId(foodItem._id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div>
-                      <h3> {{foodItem.name}} <span class="primary-text">{{ foodItem.price }} TND </span> </h3>
-
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, explicabo.</p>
+                  <img [src]="foodItem.image" [alt]="foodItem.name" (click)="getId(foodItem._id)">
+                  <div>
+                      <h3>{{foodItem.name}} <span class="primary-text">{{ foodItem.price }} TND</span></h3>
+                      <p>Plongez dans une expérience culinaire rafraîchissante avec notre plat.</p>
                   </div>
               </div>
-              </div>
-              </div>
-              </div>
-              </section>
+          </div>
+      </div>
+      <button class="btn btn-third"><a routerLink="/menu">Découvrez l'ensemble des délices</a></button>
+  </div>
+</section>
+
 <!-- Daytime section start-->
 <section id="daytime">
   <div class="container">
       <div class="daytime-items">
           <div class="daytime-item">
               <img src="assets/img/breckfastIcon.png" alt="Breakfast">
-              <h3>Breakfast</h3>
-              <p>8:00 am to 10:00 am</p>
+              <h3>Petit-déjeuner</h3>
+              <p>9:00 am à 11:00 am</p>
           </div>
           <div class="daytime-item">
               <img src="assets/img/lunchIcon.png" alt="Lunch">
-              <h3>Lunch</h3>
-              <p>4:00 pm to 7:00 pm</p>
+              <h3>Déjeuner</h3>
+              <p>12:00 pm to 16:00 pm</p>
           </div>
           <div class="daytime-item">
               <img src="assets/img/dinnerIcon.png" alt="Dinner">
-              <h3>Dinner</h3>
-              <p>9:00 pm to 1:00 Am</p>
+              <h3>Dîner</h3>
+              <p>18:00 pm to 00:00 Am</p>
           </div>
           <div class="daytime-item">
               <img src="assets/img/dessertIcon.png" alt="dessert">
               <h3>Dessert</h3>
-              <p>All day</p>
+              <p>Toute la journée</p>
           </div>
       </div>
   </div>
@@ -94,18 +193,19 @@
       <div class="contact-content">
           <div class="contact-info">
               <div>
-                  <h3>ADDRESS</h3>
-                  <p><i class="fa-solid fa-location-dot"></i>Zone Touristique Gammarth Gammarth, Tunis</p>
-                  <p><i class="fa-solid fa-phone"></i> Phone: 21 000 555</p>
-                  <p><i class="fa-regular fa-envelope"></i> foody.com</p>
+                  <h3>ADDRESSE</h3>
+                  <p><i class="fa fa-map-marker"></i>Zone Touristique Gammarth Gammarth, Tunis</p>
+                  <p><i class="fa fa-phone"></i> Téléphone: 21 000 555</p>
+                  <p><i class="far fa-envelope"></i> foody.com</p>
+
               </div>
               <div>
-                  <h3>WORKING HOURS</h3>
-                  <p>8:00 am to 11:00 pm on days</p>
-                  <p>8:00 am to 1:00 Am on Weekends</p>
+                  <h3>HEURES D'OUVERTURE</h3>
+                  <p>9:00 am à 00:00 pm du Lundi à Vendredi</p>
+                  <p>9:00 am to 1:00 Am les weekends</p>
               </div>
               <div>
-                  <h3>FOLLOW US</h3>
+                  <h3>SUIVEZ-NOUS</h3>
                   <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                   <a href="#"><i class="fa-brands fa-twitter"></i></a>
                   <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -114,19 +214,15 @@
           <!-- home.component.html -->
 <form [formGroup]="contactForm" (ngSubmit)="ajouterContact()">
   <!-- Vos champs de formulaire ici -->
-  <input type="text" formControlName="name" placeholder="Full Name">
-  <input type="email" formControlName="email" placeholder="Email Address">
-  <input type="text" formControlName="subject" placeholder="Subject">
+  <input type="text" formControlName="name" placeholder="Nom Complet">
+  <input type="email" formControlName="email" placeholder="Adresse e-mail">
+  <input type="text" formControlName="subject" placeholder="Sujet">
   <textarea formControlName="message" cols="30" rows="5" placeholder="Message"></textarea>
-  <button type="submit" class="btn btn-third">SEND MESSAGE</button>
+  <button type="submit" class="btn btn-third">ENVOYER</button>
 </form>
 
       </div>
   </div>
 </section>
 <!-- Contact Section End -->
-
-<footer id="footer">
-<p>Copyright &copy; 2023 All rights reserved | made by <b> <a href="#"
-          target="_blank"> Maram Gnouma </a> </b></p>
-</footer>
+<app-footer></app-footer>
